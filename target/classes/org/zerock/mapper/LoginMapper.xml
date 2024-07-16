@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.LoginMapper"> <!-- LoginMapper인터페이스에 맞춰야 함-->
+	<select id = "login" resultType = "org.zerock.domain.User">	
+	<![CDATA[
+		SELECT mem_no,
+			   mem_id,
+			   mem_pwd,
+			   mem_name,
+			   mem_enfirst,
+			   mem_enlast,
+			   mem_email,
+			   mem_phone,
+			   mem_post,
+			   mem_addr,
+			   mem_detail_addr,
+			   mem_date,
+			   mem_out
+		FROM member
+		WHERE mem_id=#{mem_id} 
+		AND mem_pwd=#{mem_pwd}
+	]]>
+	</select>
+</mapper>
+

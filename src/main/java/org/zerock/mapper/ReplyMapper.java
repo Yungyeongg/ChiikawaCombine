@@ -1,0 +1,29 @@
+package org.zerock.mapper;
+
+import java.util.List;
+
+import org.zerock.domain.ReplyVO;
+
+public interface ReplyMapper {
+	
+	
+	//댓글 표시
+	public List<ReplyVO> readReply(int bno) throws Exception;
+	
+	//댓글 작성
+	public void writeReply(ReplyVO vo) throws Exception;
+	
+	//댓글 수정
+	public void updateReply(ReplyVO vo) throws Exception;
+
+	//댓글 삭제
+	public void deleteReply(ReplyVO vo) throws Exception;
+
+	//선택된 댓글 조회
+	public ReplyVO selectReply(int rno) throws Exception;
+
+		
+	
+	
+
+}

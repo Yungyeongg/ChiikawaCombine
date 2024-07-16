@@ -1,0 +1,599 @@
+@charset "utf-8";
+
+/* 레이아웃 */
+#mNav {
+  display: none;
+  position: absolute;
+  top: 23px;
+  right: 16px;
+}
+#header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+}
+#banner {
+  position: relative;
+  background: rgba(0, 0, 0, 0.1);
+}
+#movie {
+  background-color: #f2f2f2;
+}
+
+#footer {
+  background: #211f1f;
+  
+}
+
+/* 가운데 영역 */
+.container {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto; /* background:rgba(0,0,0,0.1); */
+}
+
+/* 로우 영역 */
+.row {
+  padding: 0 16px;
+}
+
+/* 모바일 메뉴 */
+.ham {
+  display: block;
+  width: 25px;
+  height: 4px;
+}
+.ham span {
+  position: relative;
+  display: block;
+  width: 25px;
+  height: 4px;
+  background: #39106a;
+}
+.ham span::before {
+  content: '';
+  width: 25px;
+  height: 4px;
+  background: #39106a;
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  transition: transform 0.3s;
+}
+.ham span::after {
+  content: '';
+  width: 25px;
+  height: 4px;
+  background: #39106a;
+  position: absolute;
+  left: 0;
+  top: -7px;
+  transition: transform 0.3s;
+}
+
+/* 헤더 */
+.header h1 {
+  float: left;
+  position: relative;
+}
+.header h1 em {
+  float: left;
+  left: 10px;
+  display: inline;
+}
+.header h1 em img {
+  width: 150px;
+}
+.header p {
+  position: fixed;
+  font-size: 20px;
+  font-weight: 700;
+  left: 250px;
+  top: 15px;
+}
+.header .nav {
+  float: right;
+}
+.header .nav ul {
+  border-left: 1px solid #c6c6c6;
+}
+.header .nav li {
+  float: left;
+  width: 100px;
+  text-align: center;
+  border-right: 1px solid #c6c6c6;
+}
+.header .nav li a {
+  display: block;
+  padding: 14px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #444;
+}
+
+/* 슬라이드 */
+.slider {
+  width: 100%;
+}
+.slider .ss1 {
+  background: url(../img/banner1.jpg) no-repeat center center;
+  background-size: cover;
+}
+.slider .ss2 {
+  background: url(../img/banner2.jpg) no-repeat center center;
+  background-size: cover;
+}
+.slider .ss3 {
+  background: url(../img/banner3.jpg) no-repeat center center;
+  background-size: cover;
+}
+.slider .swiper-slide {
+  text-align: left;
+}
+.slider .swiper-slide.ss3 {
+  text-align: left;
+}
+.slider .swiper-slide h3 {
+  font-size: 60px;
+  color: #fff;
+  margin-top: 250px;
+  opacity: 1;
+}
+.slider .swiper-slide p {
+  font-size: 24px;
+  color: #bbb;
+  margin-bottom: 200px;
+  font-weight: 100;
+}
+
+/* 무비 */
+#button {
+  width: 150px;
+  height: 50px;
+  padding: 10px 5px;
+  background-color: #007bff;
+  color: #fff;
+  /* 텍스트 색상 */
+  border: none;
+  /* 테두리 제거 */
+  cursor: pointer;
+  margin-top: 50px;
+  margin-left: 480px;
+  font-size: 20px;
+}
+.movie {
+  padding: 100px 0;
+}
+.movie_title ul {  
+  width: 848px;
+  margin: 0 auto;
+}
+.movie_title li {
+  float: left;
+  width: 210px;
+  margin-right: -1px;
+  text-align: center;
+  border: 1px solid #c4c4c4;
+}
+.movie_title li a {
+  display: block;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #666;
+  font-weight: 700;
+}
+
+/* 푸터 */
+
+#footer{
+	height:500px;
+	
+}
+
+
+.footer_sns {
+  position: absolute;
+  right: 17px;
+  top: 33px;
+  z-index: 1;
+}
+.footer_sns li {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-left: 4px;
+}
+.footer_sns li.s1 {
+  background-position: 0 -375px;
+}
+.footer_sns li.s2 {
+  background-position: -36px -375px;
+}
+.footer_sns li.s3 {
+  background-position: -72px -375px;
+}
+.footer_sns li.s4 {
+  background-position: -108px -375px;
+}
+.footer_sns li.s5 {
+  background-position: -144px -375px;
+}
+.footer_sns li.s1:hover {
+  background-position: 0 -411px;
+}
+.footer_sns li.s2:hover {
+  background-position: -36px -411px;
+}
+.footer_sns li.s3:hover {
+  background-position: -72px -411px;
+}
+.footer_sns li.s4:hover {
+  background-position: -108px -411px;
+}
+.footer_sns li.s5:hover {
+  background-position: -144px -411px;
+}
+.footer_sns .tel {
+  text-align: right;
+  padding-top: 5px;
+}
+.footer_sns .tel a {
+  color: #8f8f8f;
+  font-size: 21px;
+}
+.footer_sns .tel a em {
+  color: #fff;
+}
+
+.footer_infor {
+  padding: 50px 0;
+  width: 80%;
+}
+.footer_infor h2 img {
+  width: 150px;
+}
+.footer_infor ul {
+  padding: 15px 0;
+}
+.footer_infor li {
+  position: relative;
+  display: inline;
+  padding-right: 16px;
+  white-space: nowrap;
+}
+.footer_infor li:after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 1px;
+  height: 11px;
+  background: #8f8f8f;
+}
+.footer_infor li:last-child:after {
+  width: 0;
+  height: 0;
+}
+.footer_infor li a {
+  color: #8f8f8f;
+}
+.footer_infor address p {
+  color: #8f8f8f;
+  padding-bottom: 15px;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1290px) {
+  .container {
+    width: 100%;
+  }
+  #header .row {
+    padding-right: 0;
+  }
+  .header .nav li:last-child {
+    border-right: 0;
+  }
+
+  .slider .swiper-slide.ss3 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header h1 em {
+    padding: 11px 11px 8px 0px;
+  }
+  .header h1 em img {
+    width: 135px;
+  }
+  .header h1 strong {
+    left: 150px;
+    top: 18px;
+  }
+  .header h1 strong img {
+    width: 117px;
+  }
+}
+
+@media (max-width: 960px) {
+  #mNav {
+    display: block;
+  }
+  .header .nav {
+    display: none;
+  }
+  .header h1 {
+    text-align: center;
+    float: none;
+  }
+  .header h1 em {
+    padding-right: 0;
+  }
+  .header h1 strong {
+    left: 0px;
+  }
+
+  .banner_menu .bm_left ul {
+    display: none;
+  }
+  .banner_menu .bm_right ul:first-child {
+    display: none;
+  }
+
+  .slider {
+    height: 500px;
+  }
+  .slider .swiper-slide h3 {
+    margin-top: 210px;
+    font-size: 40px;
+  }
+  .slider .swiper-slide p {
+    margin-bottom: 100px;
+    font-size: 20px;
+  }
+
+  .movie_title ul {
+    width: auto;
+  }
+  .movie_title li {
+    width: 25%;
+    box-sizing: border-box;
+    padding-right: 1px;
+  }
+
+  .footer_sns {
+    position: static;
+    text-align: center;
+    background: #352c2c;
+    padding-bottom: 15px;
+  }
+  .footer_sns .tel {
+    display: none;
+  }
+  .footer_infor {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: #d9d7e0;
+  }
+  #movie {
+    background-color: transparent;
+  }
+  #movie .row {
+    margin: 24px;
+    padding: 24px;
+    background: #fff;
+  }
+  #movie .ir_so {
+    position: static;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    text-indent: 0;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+  .movie {
+    padding: 0;
+  }
+  .movie_title {
+    margin-bottom: 30px;
+  }
+  .movie_title ul {
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .movie_title ul:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+    background: #e1e1e1;
+  }
+  .movie_title li {
+    width: auto;
+    border: 0;
+  }
+  .movie_title li a {
+    position: relative;
+    font-size: 18px;
+    color: #666;
+    font-weight: 400;
+    padding: 0;
+    margin-right: 35px;
+  }
+  .movie_title li.active a:before {
+    content: '';
+    position: absolute;
+    z-index: 10000;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 2px;
+    background: #666;
+  }
+  .movie_title li.active a {
+    background: none;
+    color: #666;
+  }
+}
+
+@media (max-width: 600px) {
+  .header h1 strong {
+    display: none;
+  }
+  .header h1 {
+    text-align: left;
+  }
+
+  .banner_menu .bm_right li.white a {
+    font-size: 14px;
+    padding: 3px 5px 5px 5px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #fff;
+  }
+  .banner_menu .bm_right li.purple a {
+    font-size: 14px;
+    padding: 3px 5px 5px 5px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #fff;
+  }
+
+  .slider {
+    height: 400px;
+  }
+  .slider .swiper-slide h3 {
+    margin-top: 200px;
+    font-size: 30px;
+  }
+  .slider .swiper-slide p {
+    margin-bottom: 100px;
+    font-size: 12px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  .swiper-pagination-bullet {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  #movie .container {
+    position: relative;
+  }
+  #movie .container:after {
+    content: '';
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: #d9d7e0;
+  }
+  #movie .row {
+    position: relative;
+    margin: 8px;
+    padding: 16px;
+    background: #fff;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  #movie .row:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 24px;
+    height: 100%;
+    background: #fff;
+  }
+  #movie .ir_so {
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  .movie_title {
+    margin-bottom: 20px;
+  }
+  .movie_title ul {
+    padding-bottom: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .movie_title li a {
+    font-size: 14px;
+    margin-right: 15px;
+  }
+  .movie_title li.active a:before {
+    bottom: -8px;
+  }
+  .movie_chart {
+    position: relative;
+    z-index: 30;
+  }
+  .movie_chart > div > div > div .infor {
+    padding: 5px;
+  }
+  .movie_chart > div > div > div .infor h3 {
+    text-align: center;
+    margin: 5px 0 10px;
+  }
+  .movie_chart > div > div > div .infor h3 strong {
+    display: block;
+    font-size: 19px;
+    color: #222;
+    font-weight: 300;
+  }
+  .movie_chart > div > div > div .infor h3 span {
+    display: none;
+  }
+  .movie_chart > div > div > div .infor .infor_btn a {
+    width: 52%;
+    margin-left: 24%;
+    display: block;
+    margin-right: 0;
+    padding: 5px;
+    color: #777;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: none;
+    border: 1px solid #ddd;
+  }
+  .movie_chart > div > div > div .infor .infor_btn a:last-child {
+    display: none;
+  }
+
+  .footer_infor {
+    padding: 30px 0;
+  }
+  .footer_infor address p br {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 320px) {
+  .movie_title li a {
+    margin-right: 9px;
+  }
+}

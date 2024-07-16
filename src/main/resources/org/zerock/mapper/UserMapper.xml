@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.UserMapper"> <!-- UserMapper인터페이스에 맞춰야 함-->
+	<!-- id 중복 체크 -->
+	<select id="selectId" resultType="boolean">
+        SELECT count(*) FROM member WHERE mem_id = #{mem_id}
+    </select>
+    <!-- 회원가입 -->
+    <insert id="insertUser"> 
+        INSERT INTO member (mem_no, mem_id, mem_pwd, mem_name, mem_enfirst, mem_enlast, 
+                            mem_email, mem_phone, mem_post, mem_addr, mem_detail_addr, mem_date, mem_out)
+        VALUES (
+        	mem_no.nextval,
+            #{mem_id, jdbcType=VARCHAR}, 
+            #{mem_pwd, jdbcType=VARCHAR}, 
+            #{mem_name, jdbcType=VARCHAR}, 
+            #{mem_enfirst, jdbcType=VARCHAR}, 
+            #{mem_enlast, jdbcType=VARCHAR}, 
+            #{mem_email, jdbcType=VARCHAR}, 
+            #{mem_phone, jdbcType=VARCHAR}, 
+            #{mem_post, jdbcType=VARCHAR}, 
+            #{mem_addr, jdbcType=VARCHAR}, 
+            #{mem_detail_addr, jdbcType=VARCHAR},
+            default,
+            default 
+   			)
+    </insert>
+    <!-- 회원 정보 보기 -->
+    <select id="getUserInfo" parameterType="String" resultType="org.zerock.domain.User">
+        SELECT 
+        	mem_name,
+        	mem_enfirst,
+        	mem_enlast,
+        	mem_pwd,
+        	mem_email,
+        	mem_phone,
+        	mem_post,
+        	mem_addr,
+        	mem_detail_addr
+        FROM member 
+        WHERE 
+        	mem_id = #{mem_id}
+    </select>
+    <!-- 회원 탈퇴 -->
+    <update id="memOut" parameterType="String">
+    	UPDATE member
+		SET
+			mem_out = 'o'
+		WHERE
+			mem_id = #{mem_id}
+    </update>
+     <!--회원 정보 업데이트  -->
+     <update id="updateUser" parameterType="org.zerock.domain.User">  <!-- 파라미터 타입 꼭 쓰기, 업데이트 문법 마이바티스에서 '' 안씀 -->
+    	 UPDATE member SET 
+            mem_name = #{mem_name},
+            mem_enfirst = #{mem_enfirst},
+            mem_enlast = #{mem_enlast},
+            mem_pwd = #{mem_pwd},
+            mem_email = #{mem_email},
+            mem_phone = #{mem_phone},
+            mem_post = #{mem_post},
+            mem_addr = #{mem_addr},
+            mem_detail_addr = #{mem_detail_addr}
+        WHERE mem_id = #{mem_id}
+	</update> 
+	<!-- 회원 id 찾기 -->
+	<select id="findId" resultType="org.zerock.domain.User">
+        SELECT 
+        	 mem_id
+        FROM member 
+        WHERE 
+        	mem_name = #{mem_name}
+        AND mem_email = #{mem_email}
+    </select>
+	<!-- 회원 pwd 찾기 1. 유효성검사-->
+	<select id="pwdCheck" resultType="Integer">
+		SELECT
+			count(*) 
+		FROM member
+		WHERE mem_id = #{mem_id} 
+		AND mem_name = #{mem_name}
+		AND mem_email = #{mem_email}
+	</select>
+	<!-- 회원 pwd 찾기 2. 새로운 비밀번호 발급한걸로 업데이트-->
+	<update id="pwdUpdate">
+		UPDATE member
+		SET
+			mem_pwd = #{mem_pwd}
+		WHERE
+			mem_id = #{mem_id} 
+		AND mem_name = #{mem_name} 
+		AND mem_email = #{mem_email}
+	</update>
+</mapper>
+

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.BookMapper"> <!-- BookMapper인터페이스에 맞춰야 함-->
+    <!-- 예약하기 -->
+    <insert id="insertBook" parameterType="org.zerock.domain.BookVO"> 
+		INSERT INTO book (
+			book_no
+			, mem_id
+			, checkin
+			, checkout
+			, person
+			, book_date
+			, book_cancel
+			, breakfast
+			, branch
+			, roomtype
+			, payment_op
+			, payment
+			, charge
+		) VALUES (
+			#{book_no}
+			,#{mem_id}
+			,#{checkin}
+			,#{checkout}
+			,#{person}
+			,default
+			,default
+			,#{breakfast}
+			,#{branch}
+			,#{roomtype}
+			,#{payment_op}
+			,default
+			,#{charge}
+		)
+    </insert>
+  
+     <!-- 예약 리스트 조회 하기 -->
+    <select id="getBook" parameterType="String" resultType="org.zerock.domain.BookVO"> 
+		SELECT 
+			book_no
+			, checkin 
+			, checkout 
+			, person
+			, book_date
+			, book_cancel
+			, breakfast
+			, branch
+			, roomtype
+			, payment_op
+			, payment
+			, charge
+		FROM book
+		WHERE mem_id = #{mem_id}
+    </select>
+    
+     <!-- 예약 상세 조회 하기 --> 
+    <select id="read" parameterType="String" resultType="org.zerock.domain.BookVO"> 
+		SELECT 
+			book_no
+			, mem_id
+			, checkin 
+			, checkout 
+			, person
+			, book_date
+			, book_cancel
+			, breakfast
+			, branch
+			, roomtype
+			, payment_op
+			, payment
+			, charge
+		FROM book
+		WHERE book_no = #{book_no}
+    </select>
+    
+    <!-- 예약 취소 하기 -->
+    <update id="cancelBook" parameterType="String">
+    	 UPDATE book SET 
+        	book_cancel = 'o'
+        WHERE 
+        	book_no = #{book_no}
+    </update>
+    
+    <!-- 취소된 예약 조회 하기 --> 
+    <select id="getCanceledBook" parameterType="String" resultType="String"> 
+		SELECT 
+			book_cancel	
+		FROM book
+		WHERE mem_id = #{mem_id}
+    </select>
+    
+    <!-- 예약된 객실 갯수 -->
+    <select id="getBookedCount" parameterType="org.zerock.domain.BookVO" resultType="int"> 
+    	<![CDATA[
+	    	SELECT 	COUNT(*)
+			FROM    BOOK
+			WHERE   BRANCH = #{branch}
+			AND     ROOMTYPE = #{roomtype}
+			AND 
+			(
+			    (#{checkin} BETWEEN CHECKIN AND CHECKOUT) OR (#{checkout} BETWEEN CHECKIN AND CHECKOUT)
+			)
+			AND #{checkout} != CHECKIN
+			AND #{checkin} != CHECKOUT
+		]]>
+    </select>   
+</mapper>
